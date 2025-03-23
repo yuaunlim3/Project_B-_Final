@@ -1,0 +1,15 @@
+footer {
+    background-color: black;
+    padding: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    font-size: 1vw;
+}
+.footer-contact {
+    color: white;
+    margin: 0;
+}

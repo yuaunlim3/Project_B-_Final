@@ -1,0 +1,107 @@
+<div class="page">
+    <section class="forecast">
+        <h1>Weather Forecast</h1>
+        @if (weatherList.length > 0) {
+            <div class="weather_datas">
+                @for (weather of (subs === "free" ? weatherList.slice(0, 3) : weatherList); track weather) {
+                    <div class="weather_info"
+                        [ngStyle]="{'background-image': 'url(' + getWeatherIconUrl(weather.image) + ')'}">
+                        <h3>Date: {{ weather.date }}</h3>
+                        <p>Max Temperature: {{ weather.maxTemp }}°C</p>
+                        <p>Min Temperature: {{ weather.minTemp }}°C</p>
+                        <p>Average Temperature: {{ weather.avgTemp }}°C</p>
+                        <p>Description: {{ weather.description }}</p>
+                    </div>
+                }
+                
+
+                @if (subs === "free" && weatherList.length > 3) {
+                    <div class="weather_info premium-locked">
+                        <h3>Premium Feature</h3>
+                        <p>Upgrade to premium to access the full 7-day forecast!</p>
+                        <button class="upgrade-btn" [routerLink]="['/user/accountInfo/', user]">Upgrade Now</button>
+                    </div>
+                }
+            </div>
+        } @else {
+            <p>No weather data available.</p>
+        }
+    </section>
+
+    <main class="workout">
+        <div class="form">
+            <form [formGroup]="form" (submit)="save()">
+                <p>Add Workouts</p>
+                <table>
+                    <tr>
+                        <td>Workout Details:</td>
+                        <td>
+                            <textarea formControlName="details"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Workout Type:</td>
+                        <td>
+                            <select formControlName="type">
+                                <option value="Cardio">Cardio</option>
+                                <option value="Gym">Gym</option>
+                                <option value="Strength">Strength</option>
+                                <option value="Yoga">Yoga</option>
+                                <option value="Stretching">Stretching</option>
+                                <option value="Sports">Sports</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Duration (minutes):</td>
+                        <td>
+                            <input type="number" formControlName="duration">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Status:</td>
+                        <td>
+                            <select formControlName="status">
+                                <option value="completed">Completed</option>
+                                <option value="planned">Planned</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr *ngIf="form.get('status')!.value === 'planned'">
+                        <td>Planned Date:</td>
+                        <td>
+                            <input type="date" formControlName="date">
+                            <div *ngIf="form.get('date')?.invalid && (form.get('date')?.touched || form.get('date')?.dirty)" class="error">
+                                <div *ngIf="form.get('date')?.errors?.['dateInvalid']">The date must be today or in the future.</div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <button type="submit" [disabled]="form.invalid">Save</button>
+            </form>
+        </div>
+        
+        <div class="todo">
+            <h1>Planned Workouts</h1>
+            <div *ngIf="plannedWorkouts.length === 0">
+                <h2>No workouts added yet</h2>
+            </div>
+            <div *ngFor="let item of plannedWorkouts , let i = index" class="workout-item">
+                <div class="workout-details">
+                    <p><strong>Index:</strong> {{i + 1}}</p>
+                    <p><strong>Details:</strong> {{item.details}}</p>
+                    <p><strong>Type:</strong> {{item.type}}</p>
+                    <p><strong>Duration:</strong> {{item.duration}} minutes</p>
+                    <p><strong>Calories:</strong> {{item.calories}} kcal</p>
+                    <p><strong>Date:</strong> {{item.date}}</p>
+                    <p><strong>Status:</strong> {{item.status}}</p>
+                </div>
+                <div class="workout-action" *ngIf="item.status === 'planned'">
+                    <button (click)="changeStatus(item,i)">
+                        Mark as Completed
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

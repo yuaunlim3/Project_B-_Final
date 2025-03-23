@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f7f9fc;
+    color: #333;
+    line-height: 1.6;
+}
+
+.success-container {
+    max-width: 1500px;
+    margin: 60px auto;
+    padding: 40px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #4caf50;
+    border-radius: 50%;
+    margin: 0 auto 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.success-icon svg {
+    width: 40px;
+    height: 40px;
+    fill: white;
+}
+
+h1 {
+    color: #2e7d32;
+    margin-bottom: 15px;
+    font-size: 28px;
+}
+
+.message {
+    color: #546e7a;
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.details-box {
+    background-color: #f1f8f1;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.details-box h3 {
+    color: #2e7d32;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 12px;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.detail-label {
+    color: #546e7a;
+    font-weight: 500;
+}
+
+.detail-value {
+    color: #333;
+    font-weight: 600;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 6px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 16px;
+}
+
+.btn-primary {
+    background-color: #2e7d32;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #1b5e20;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #2e7d32;
+    border: 2px solid #2e7d32;
+}
+
+.btn-secondary:hover {
+    background-color: #f1f8f1;
+}

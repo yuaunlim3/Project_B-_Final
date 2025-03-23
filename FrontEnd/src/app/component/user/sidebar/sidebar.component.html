@@ -1,0 +1,46 @@
+<nav>
+    <ul class="sidebar">
+        <li class="menu-item">
+            <span class="icon">
+                <img src="/nav_bar_icons/home.png" class="iconImage">
+            </span>
+            <a [routerLink]="['user/homepage/',user]" class="label">Home</a>
+        </li>
+        <li class="menu-item">
+            <span class="icon">
+                <img src="/nav_bar_icons/data.png" class="iconImage">
+            </span>
+            <a [routerLink]="['user/data',user]" class="label">Get Data</a>
+        </li>
+        <li class="menu-item">
+            <span class="icon">
+                <img src="/nav_bar_icons/meal.png" class="iconImage">
+            </span>
+            <a [routerLink]="['user/addMeal/',user]" class="label">Add Meals</a>
+        </li>
+        <li class="menu-item">
+            <span class="icon">
+                <img src="/nav_bar_icons/workout.png" class="iconImage">
+            </span>
+            <a [routerLink]="['user/addWorkout/',user]" class="label">Plan Workouts</a>
+        </li>
+        <li class="menu-item">
+            <span class="icon">
+                <img src="/nav_bar_icons/info.png" class="iconImage">
+            </span>
+            <a [routerLink]="['user/accountInfo/',user]" class="label">Profile</a>
+        </li>
+        @if (subs === "premium") {
+            <li class="menu-item">
+                <span class="icon">
+                    <img src="/nav_bar_icons/leaderboard.png" class="iconImage">
+                </span>
+                <a [routerLink]="['user/leaderboard/',user]" class="label">Leaderboard</a>
+            </li>
+        }
+        <br><br>
+        <button class='logout' (click)="logout()">
+            <span class="btn-txt">Logout</span>
+        </button>
+    </ul>
+</nav>

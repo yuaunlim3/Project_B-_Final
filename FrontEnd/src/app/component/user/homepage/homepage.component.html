@@ -1,0 +1,90 @@
+<main class="page">
+  <header class="title">
+    <p>Welcome <code>{{ userInfo.name }}</code></p>
+  </header>
+
+  <section class="homepage">
+    <aside class="left-column">
+      <section class="login">
+        <h2 class="login-title">Login Streak</h2>
+        <div class="login-info">
+          <p class="login-message">{{ userInfo.login_streak }}</p>
+        </div>
+      </section>
+
+      <section class="general">
+        <h3 class="general-title">General Data of User</h3>
+        <p>Target: <code>{{ userInfo.target }}</code></p>
+        <p>Activity Level: <code>{{ userInfo.activity_level }}</code></p>
+        <p>Target Calories: <code>{{ userInfo.target_cal | number: '1.2-2' }}</code> kcal</p>
+        <p>Missed Workouts: <code>{{ userInfo.missed }}</code></p>
+      </section>
+    </aside>
+
+    <div class="right-column">
+      <section class="meals">
+        <h2>Meals Information</h2>
+        <div *ngIf="(meals$ | async) as meals" class="mealInfo">
+          <ng-container *ngIf="meals.length < 1; else mealList">
+            <h4>No Meals added</h4>
+          </ng-container>
+          <ng-template #mealList> 
+            <ul class="meal-list">
+              <li *ngFor="let meal of meals" class="meal-item">
+                <article class="meal-details">
+                  <span class="meal-name">{{ meal.food }}</span>
+                  <span class="meal-calories"> - {{ meal.calories | number: '1.2-2' }} kcal</span>
+                  @if (subscription === "premium") {
+                    <div class="meal-nutrition">
+                      <span class="meal-fat">Fat: {{ meal.fat | number: '1.2-2' }}g</span>
+                      <span class="meal-sugars"> | Sugars: {{ meal.sugars | number: '1.2-2' }}g</span>
+                      <span class="meal-protein"> | Protein: {{ meal.protein | number: '1.2-2' }}g</span>
+                    </div>
+                  }
+                </article>
+              </li>
+            </ul>
+          </ng-template>
+        </div>
+        @if (subscription === "premium") {
+          <div class="chart-container">
+            <canvas #NutrientChart id="NutrientChart"></canvas>
+          </div>
+        }
+        <footer class="details">
+          <p>Total Calories: {{ (totalCalories$ | async) || 0 }} kcal</p>
+        </footer>
+      </section>
+
+      <section class="workout">
+        <h2>Workout Information</h2>
+        <div *ngIf="workoutList.length === 0">
+          <h4>No workouts added yet</h4>
+        </div>
+        <article class="workout-items">
+          <div class="detail-row header">
+            <span class="label">Details</span>
+            <span class="label">Duration</span>
+            <span class="label">Calories</span>
+            <span class="label">Status</span>
+          </div>
+          <div *ngFor="let item of workoutList" class="detail-row">
+            <span class="value">{{item.details}}</span>
+            <span class="value">{{item.duration}} min</span>
+            <span class="value">{{item.calories}} kcal</span>
+            <span class="value status" [ngClass]="{
+                        'completed': item.status === 'completed',
+                        'planned': item.status === 'planned'}">{{item.status}}
+            </span>
+          </div>
+        </article>
+
+        <footer class="total-calories">
+          <p>Total Calories:
+            <span class="calorie-value">{{ totalCalories }} kcal</span>
+          </p>
+        </footer>
+      </section>
+    </div>
+  </section>
+</main>

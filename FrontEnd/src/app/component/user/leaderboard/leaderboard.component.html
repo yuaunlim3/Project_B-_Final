@@ -1,0 +1,55 @@
+<div class="leaderboard-container">
+    <div class="leaderboard-header">
+      <h1>Health Tracker Leaderboards</h1>
+      <p>Track your progress and see how you compare</p>
+    </div>
+  
+    <div class="category-selector">
+      <button 
+        *ngFor="let category of ['login_streak', 'total_meals', 'total_workouts']"
+        (click)="changeCategory(category)"
+        [class.active]="activeCategory === category"
+      >
+        {{ getCategoryLabel(category) }}
+      </button>
+    </div>
+  
+    <div class="leaderboard-content">
+      <div *ngIf="isLoading" class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading leaderboard data...</p>
+      </div>
+  
+      <div *ngIf="error" class="error-state">
+        <div class="error-icon">!</div>
+        <p>{{ error }}</p>
+      </div>
+  
+      <div *ngIf="!isLoading && !error" class="leaderboard-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>{{ getCategoryLabel(activeCategory) }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let entry of currentLeaderboard" 
+                [class.top-three]="entry.rank <= 3"
+                [class.top-first]="entry.rank === 1"
+                [class.top-second]="entry.rank === 2"
+                [class.top-third]="entry.rank === 3">
+              <td class="rank">{{ entry.rank }}</td>
+              <td class="name">{{ entry.name }}</td>
+              <td class="score">{{ entry.score }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <div *ngIf="!isLoading && !error && currentLeaderboard.length === 0" class="empty-state">
+        <p>No entries found for this leaderboard category.</p>
+      </div>
+    </div>
+  </div>

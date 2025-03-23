@@ -1,0 +1,125 @@
+<div class="page">
+    <div class="title">
+        <h1>Account Info</h1>
+    </div>
+
+    <div class="account">
+        <div class="name">
+            <section>
+                <span class="text">Name: <code>{{ userInfo.name }}</code></span>
+            </section>
+            <section>
+                <span class="text">Email: <code>{{ userInfo.email }}</code></span>
+            </section>
+            <section>
+                <span class="text">Age: <code>{{ userInfo.age }}</code></span>
+            </section>
+            <section>
+                <span class="text">Gender: <code>{{ userInfo.gender }}</code></span>
+            </section>
+        </div>
+
+        <div class="password">
+            <section class="content">
+                <span class="text">Password: <code>{{ userInfo.password }}</code></span>
+            </section>
+            <div class="change">
+                <p class="title">Change Password</p>
+                <form [formGroup]="passwordForm" (submit)="updatePassword()">
+                    <input type="text" placeholder="New Password" formControlName="password">
+                    <button type="submit">Change</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="date">
+            <section>
+                <span class="text">Last Login Date: <code>{{ userInfo.last_login }}</code></span>
+            </section>
+            <section>
+                <span class="text">Date Created: <code>{{ userInfo.created_at }}</code></span>
+            </section>
+        </div>
+
+        <div class="height">
+            <section class="content">
+                <span class="text">Height: <code>{{ userInfo.height }}</code></span>
+            </section>
+            <div class="change">
+                <p class="title">Update Height</p>
+                <form [formGroup]="heightForm" (submit)="updateHeight()">
+                    <input type="text" placeholder="Update height" formControlName="height">
+                    <button type="submit">Change</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="weight">
+            <section class="content">
+                <span class="text">Weight: <code>{{ userInfo.weight }}</code></span>
+            </section>
+            <div class="change">
+                <p class="title">Update Weight</p>
+                <form [formGroup]="weightForm" (submit)="updateWeight()">
+                    <input type="text" placeholder="Update weight" formControlName="weight">
+                    <button type="submit">Change</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="level">
+            <section class="content">
+                <span class="text">Activity Level: <code>{{ userInfo.activity_level }}</code></span>
+            </section>
+            <div class="change">
+                <p class="title">Update Activity Level</p>
+                <form [formGroup]="activityForm" (submit)="updateActivityLevel()">
+                    <select formControlName="activity_level">
+                        <option value="sedentary">0 times a week (Sedentary)</option>
+                        <option value="light">1-2 times a week (Light)</option>
+                        <option value="moderate">3-4 times a week (Moderate)</option>
+                        <option value="active">5-6 times a week (Active)</option>
+                        <option value="very_active">7 times a week (Very Active)</option>
+                    </select>
+                    <button type="submit">Change</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="aim">
+            <section class="content">
+                <span class="text">Target: <code>{{ userInfo.target }}</code></span>
+            </section>
+            <div class="change">
+                <p class="title">Update Target</p>
+                <form [formGroup]="targetForm" (submit)="updateTarget()">
+                    <select formControlName="target">
+                        <option value="maintain">Maintain</option>
+                        <option value="lose">Lose</option>
+                        <option value="gain">Gain</option>
+                    </select>
+                    <button type="submit">Change</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="sub">
+            <section class="content">
+                <span class="text">Subscription: <code>{{ userInfo.subscription }}</code></span>
+                <span *ngIf="userInfo.subscription === 'premium'">
+                    Paid: {{userInfo.paid_date}} ·
+                    <strong>{{ daysRemaining }} days remaining</strong>
+                </span>
+            </section>
+            <div class="change" *ngIf="userInfo.subscription === 'free'">
+                <p class="title">Do you want to upgrade to premium?</p>
+                <button type="button" (click)="makePayment()">Yes</button>
+            </div>
+            <div class="change" *ngIf="userInfo.subscription === 'premium'">
+                <p class="title">Renew your premium subscription?</p>
+                <button type="button" (click)="makePayment()">Renew</button>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,95 @@
+<div class="create">
+    <div class="create-box">
+        <form [formGroup]="form" (submit)="createAccount()">
+            <p>Create New Account</p>
+
+            <h3>Account Informations</h3>
+            <div class="account-box">
+                <input type="text" required="" formControlName="name">
+                <label>Name</label>
+                <div class="error" *ngIf="getErrorMessage('name')">
+                    <small>{{ getErrorMessage('name') }}</small>
+                </div>
+            </div>
+            <div class="account-box">
+                <input type="text" required="" formControlName="email">
+                <label>Email</label>
+                <div class="error" *ngIf="getErrorMessage('email')">
+                    <small>{{ getErrorMessage('email') }}</small>
+                </div>
+            </div>
+            <div class="account-box">
+                <input type="text" required="" formControlName="password">
+                <label>Password</label>
+                <div class="error" *ngIf="getErrorMessage('password')">
+                    <small>{{ getErrorMessage('password') }}</small>
+                </div>
+            </div>
+
+            <h3>Physical Informations</h3>
+            <br>
+            <div class="account-box">
+                <input type="number" required="" formControlName="height">
+                <label>Height (cm)</label>
+                <div class="error" *ngIf="getErrorMessage('height')">
+                    <small>{{ getErrorMessage('height') }}</small>
+                </div>
+            </div>
+            <div class="account-box">
+                <input type="number" required="" formControlName="weight">
+                <label>Weight (kg)</label>
+                <div class="error" *ngIf="getErrorMessage('weight')">
+                    <small>{{ getErrorMessage('weight') }}</small>
+                </div>
+            </div>
+            <div class="account-box">
+                <input type="number" required="" formControlName="age">
+                <label>Age</label>
+                <div class="error" *ngIf="getErrorMessage('age')">
+                    <small>{{ getErrorMessage('age') }}</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Gender</label><br>
+                <mat-radio-group  formControlName="gender" aria-label="Select an option">
+                    <mat-radio-button value="male">Male</mat-radio-button>
+                    <mat-radio-button value="female">Female</mat-radio-button>
+                </mat-radio-group>
+            </div>
+
+            <div class="form-group">
+                <label>Activity Level</label>
+                <select formControlName="activity_level">
+                    <option value="sedentary">0 times a week (Sedentary)</option>
+                    <option value="light">1-2 times a week (Light)</option>
+                    <option value="moderate">3-4 times a week (Moderate)</option>
+                    <option value="active">5-6 times a week (Active)</option>
+                    <option value="very_active">7 times a week (Very Active)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Target</label>
+                <select formControlName="target">
+                    <option value="maintain">Maintain</option>
+                    <option value="lose">Lose</option>
+                    <option value="gain">Gain</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Subscription Type</label><br>
+                <mat-radio-group  formControlName="subscription" aria-label="Select an option">
+                    <mat-radio-button value="free">Free</mat-radio-button>
+                    <mat-radio-button value="premium">Premium</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div style="text-align: center;">
+                <button type="submit" [disabled]="formValid()">
+                    Create Account
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>

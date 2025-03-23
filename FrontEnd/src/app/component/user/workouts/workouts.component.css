@@ -1,0 +1,308 @@
+
+.page {
+    padding: 24px;
+    flex-grow: 1;
+    min-height: 100vh;
+    font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+
+.forecast, .form, .todo {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.forecast:hover, .form:hover, .todo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+.forecast h1, .todo h1, .form p {
+    color: #4a90e2;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 0;
+    padding-bottom: 14px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid #e1e8f0;
+    position: relative;
+}
+
+.forecast h1::after, .todo h1::after, .form p::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 80px;
+    height: 2px;
+    background-color: #4a90e2;
+}
+
+
+.weather_datas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.weather_info {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 220px;
+    background-position: right 10px top 10px;
+    background-repeat: no-repeat;
+    background-size: 80px;
+    border-left: 4px solid #4a90e2;
+}
+
+.weather_info:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.weather_info h3 {
+    margin-top: 0;
+    color: #4a90e2;
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+.weather_info p {
+    margin: 8px 0;
+    font-size: 1rem;
+    color: #555;
+    display: flex;
+    align-items: center;
+}
+
+.weather_info p:nth-child(2) {
+    color: #e74c3c;
+    font-weight: 500;
+}
+
+.weather_info p:nth-child(3) {
+    color: #3498db;
+    font-weight: 500;
+}
+
+.weather_info p:nth-child(4) {
+    font-weight: 500;
+    color: #f39c12;
+}
+
+.weather_info p:before {
+    margin-right: 8px;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+}
+
+.weather_info p:nth-child(2):before {
+    content: '\f2c7';
+    color: #e74c3c;
+}
+
+.weather_info p:nth-child(3):before {
+    content: '\f2cb';
+    color: #3498db;
+}
+
+.weather_info p:nth-child(4):before {
+    content: '\f2c9';
+    color: #f39c12;
+}
+
+.weather_info p:nth-child(5):before {
+    content: '\f0e7';
+    color: #95a5a6;
+}
+
+
+.workout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+
+.form table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+}
+
+.form tr {
+    border-bottom: 1px solid #edf2f7;
+}
+
+.form tr:last-child {
+    border-bottom: none;
+}
+
+.form td {
+    padding: 14px 8px;
+    vertical-align: top;
+}
+
+.form td:first-child {
+    width: 40%;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.form textarea,
+.form input[type="number"],
+.form input[type="date"],
+.form select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: #f9fafb;
+    transition: all 0.3s ease;
+}
+
+.form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form textarea:focus,
+.form input[type="number"]:focus,
+.form input[type="date"]:focus,
+.form select:focus {
+    border-color: #4a90e2;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+    background-color: #fff;
+}
+
+.form button {
+    padding: 12px 24px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin-left: auto;
+    box-shadow: 0 4px 6px rgba(76, 175, 80, 0.2);
+}
+
+.form button:hover {
+    background-color: #43a047;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(76, 175, 80, 0.25);
+}
+
+.form button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 3px rgba(76, 175, 80, 0.25);
+}
+
+.form button:disabled {
+    background-color: #a5d6a7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.error {
+    color: #e53e3e;
+    font-size: 0.9rem;
+    margin-top: 6px;
+    display: block;
+}
+
+.todo h2 {
+    color: #718096;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.2rem;
+    padding: 40px 0;
+    margin: 0;
+    background-color: #f7fafc;
+    border-radius: 8px;
+    border: 1px dashed #cbd5e0;
+}
+
+.workout-item {
+    background-color: #f8fafc;
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.workout-item:hover {
+    background-color: #edf2f7;
+    transform: translateX(5px);
+    border-left: 4px solid #4a90e2;
+}
+
+.workout-details {
+    flex: 1;
+}
+
+.workout-details p {
+    margin: 8px 0;
+    font-size: 1rem;
+    color: #4a5568;
+}
+
+.workout-details p strong {
+    color: #2d3748;
+    display: inline-block;
+    width: 85px;
+    font-weight: 600;
+}
+
+.workout-action {
+    margin-left: 20px;
+}
+
+.workout-action button {
+    padding: 10px 18px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    font-weight: 500;
+    box-shadow: 0 4px 6px rgba(74, 144, 226, 0.2);
+}
+
+.workout-action button:hover {
+    background-color: #3a7dce;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(74, 144, 226, 0.25);
+}
+
+.workout-action button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 3px rgba(74, 144, 226, 0.25);
+}
+
+
+

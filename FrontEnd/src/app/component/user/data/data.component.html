@@ -1,0 +1,90 @@
+<div class="page">
+    <div class="filter-container" [formGroup]="filterForm">
+        <div class="filter-group">
+            <label for="yearSelect">Year:</label>
+            <select id="yearSelect" formControlName="year">
+                <option value="">All Years</option>
+                <option *ngFor="let year of availableYears" [value]="year">{{ year }}</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="monthSelect">Month:</label>
+            <select id="monthSelect" formControlName="month">
+                <option value="">All Months</option>
+                <option *ngFor="let month of availableMonths" [value]="month.value">{{ month.label }}</option>
+            </select>
+        </div>
+
+        <button class="clear-button" (click)="clearFilters()">Clear Filters</button>
+    </div>
+
+    @if (subscription ==="premium") {
+
+    <div class="achievements-container">
+        <h2>Achievements</h2>
+
+        <div *ngIf="userAchievements.length === 0" class="no-achievements">
+            <p>You haven't earned any achievements yet. Keep using the app to unlock achievements!</p>
+        </div>
+
+        <div *ngIf="userAchievements.length > 0" class="achievements-grid">
+            <div *ngFor="let achievement of userAchievements" class="achievement-card achieved">
+                <div class="achievement-icon">
+                    <i class="fas {{ getAchievementIcon(achievement.achievement) }}"></i>
+                </div>
+                <div class="achievement-content">
+                    <h3>{{ getAchievementName(achievement.achievement) }}</h3>
+                    <p>{{ achievement.description }}</p>
+                    <span class="achievement-date">Achieved: {{ achievement.dateEarned | date:'mediumDate' }}</span>
+                </div>
+            </div>
+
+            <ng-container *ngIf="userAchievements.length < 10">
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <h3>???</h3>
+                        <p>Keep using the app to unlock more achievements!</p>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+
+    }
+    <div class="title">
+        <h2>Fitness Data for <code>{{user}}</code></h2>
+    </div>
+
+
+    <div class="containerChart">
+        <h3>Workout Data</h3>
+        <div class="chart-container">
+            <canvas #MyChart></canvas>
+        </div>
+
+        <aside class="legend">
+            <div class="legend-item">
+                <span class="legend-color" style="background-color: red;"></span>
+                <span class="legend-label">Calories Burnt</span>
+            </div>
+        </aside>
+    </div>
+
+
+    <div class="containerChart">
+        <h3>Meal Data</h3>
+        <div class="chart-container">
+            <canvas #MyChart></canvas>
+        </div>
+
+        <aside class="legend">
+            <div class="legend-item">
+                <span class="legend-color" style="background-color: blue;"></span>
+                <span class="legend-label">Calories Consumed</span>
+            </div>
+        </aside>
+    </div>

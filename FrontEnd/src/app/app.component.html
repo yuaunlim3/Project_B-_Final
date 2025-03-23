@@ -1,0 +1,15 @@
+<div *ngIf="showWebNavbar">
+  <app-navbar></app-navbar>
+</div>
+
+<div *ngIf="showUserNavbar" class="sidebar">
+  <app-sidebar></app-sidebar>
+</div>
+
+<div [class.shifted]="showUserNavbar" class="content">
+  <router-outlet></router-outlet>
+</div>
+
+<div [class.shifted]="showUserNavbar">
+  <app-footers></app-footers>
+</div>

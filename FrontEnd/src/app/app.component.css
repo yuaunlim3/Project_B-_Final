@@ -1,0 +1,45 @@
+/* App-wide animated background */
+:host {
+  display: block;
+  min-height: 100vh;
+  background: linear-gradient(45deg, #d3d3d3, #a9a9a9, #808080, #696969, #000000);
+  background-attachment: fixed;
+  background-size: 500%;
+  animation: backgroundAnimation 20s infinite ease;
+}
+
+@keyframes backgroundAnimation {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.content {
+  transition: margin-left 0.5s ease;
+}
+
+.content.shifted {
+  margin-left: 60px; 
+}
+
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 1000;
+  background: transparent; 
+}
+
+
+app-footers {
+  transition: margin-left 0.5s ease;
+}
+
+app-footers.shifted {
+  margin-left: 60px; 
+}

@@ -1,0 +1,36 @@
+<div class="success-container">
+    <div class="success-icon">
+        <svg viewBox="0 0 24 24">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+        </svg>
+    </div>
+    
+    <h1>Payment Successful!</h1>
+    <p class="message">Thank you for your payment. Your account has been created successfully.</p>
+    
+    <div class="details-box">
+        <h3>Payment Details</h3>
+        <div class="detail-row">
+            <span class="detail-label">Transaction ID:</span>
+            <span class="detail-value" id="transaction-id">{{id}}</span>
+        </div>
+        <div class="detail-row">
+            <span class="detail-label">Amount:</span>
+            <span class="detail-value" id="amount">$10.00</span>
+        </div>
+        <div class="detail-row">
+            <span class="detail-label">Date:</span>
+            <span class="detail-value" id="date">{{date}}</span>
+        </div>
+        <div class="detail-row">
+            <span class="detail-label">Email:</span>
+            <span class="detail-value" id="email">{{email}}</span>
+        </div>
+    </div>
+    
+    <p>You can now access all the premium features of our health tracking platform.</p>
+    
+    <div class="action-buttons">
+        <button class="btn btn-primary" (click)="login()" >Login</button>
+    </div>
+</div>

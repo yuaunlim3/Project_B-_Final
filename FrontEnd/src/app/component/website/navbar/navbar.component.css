@@ -1,0 +1,120 @@
+.navbar {
+    background-color: lightblue;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+}
+
+.healthicon {
+    background-image: url('/logos/health-app.png');
+    display: inline-block;
+    width: 3vw;
+    height: 3vw;
+    background-size: cover;
+    background-color: #9ee37d;
+    margin-right: 1vw;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.navbar:hover .healthicon {
+    transform: rotate(10deg);
+}
+
+.text {
+    font-size: 2.5vw;
+    font-weight: 700;
+    background-image: linear-gradient(45deg, #8ba5dd, #f84f4f, #293ef8, #4f84f8, #ff6d75);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textGradientAnimation 6s infinite ease-in-out;
+}
+
+@keyframes textGradientAnimation {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.nav_bar {
+    display: flex;
+    align-items: center;
+}
+
+.tabs {
+    display: flex;
+    gap: 2vw;
+}
+
+.tabs a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 1.5vw;
+    padding: 0.5vw 1vw;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+    font-weight: 500;
+}
+
+.tabs a:hover {
+    background-color: rgba(99, 255, 37, 0.4);
+    color: black;
+    font-weight: bolder;
+}
+
+.tabs a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 3px;
+    background-color: #4a90e2;
+    border-radius: 2px;
+}
+
+.tabs a.active {
+    font-weight: 600;
+    color: #023977;
+}
+
+.tabs a:last-child {
+    background-color: #9ee37d;
+    font-size: 1.2vw;
+    color: black;
+    border-radius: 20px;
+    box-shadow: 0 3px 8px rgba(74, 144, 226, 0.3);
+  }
+
+  .tabs a:last-child:hover {
+    background-color: #357ebd;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(74, 144, 226, 0.4);
+  }
+
+  .tabs a:last-child.active {
+    background-color: #357ebd;
+  }
+
+  .tabs a:last-child.active::after {
+    display: none;
+  }
+
+.mat-tab-group {
+    margin-bottom: 48px;
+}

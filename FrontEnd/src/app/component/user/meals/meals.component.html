@@ -1,0 +1,123 @@
+<div class="page">
+    <div class="container">
+        <p>Add meal for <span>{{date}}</span></p>
+        <form [formGroup]="form" class="form">
+
+            <div>
+                <table>
+                    <tr>
+                        <td>Meal Type</td>
+                        <td>
+                            <select formControlName="meal_type">
+                                <option value="breakfast">Breakfast</option>
+                                <option value="lunch">Lunch</option>
+                                <option value="dinner">Dinner</option>
+                                <option value="snack">Snack</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Food Item</td>
+                        <td>
+                            <input type="text" formControlName="food">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Amount:</td>
+                        <td><input type="number" formControlName="amount"></td>
+                    </tr>
+                    <tr>
+                        <td>Serving Size:</td>
+                        <td>
+                            <select formControlName="serving_size">
+                                <option value="cup">Cup</option>
+                                <option value="bowl">Bowl</option>
+                                <option value="tablespoon">Tablespoon</option>
+                                <option value="teaspoon">Teaspoon</option>
+                                <option value="ounce">Ounce</option>
+                                <option value="gram">Gram</option>
+                                <option value="serving">Serving</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <div class="button-container">
+                    <button type="button" (click)="search()">Search</button>
+                    <button type="button" (click)="reset()">Reset</button>
+                </div>
+            </div>
+        </form>
+        <div class="previous-search-container">
+            @if (previous_Search.length > 0) {
+            <div>
+                <p>Previous Searches:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Food Item</th>
+                            <th>Calories</th>
+                            @if (subs === "premium") {
+                                <th>Sugar</th>
+                                <th>Protein</th>
+                                <th>Fat</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (meal of previous_Search; track meal) {
+                        <tr>
+                            <td>{{ meal.food}}</td>
+                            <td>{{ meal.calories | number: '1.2-2' }} kcal</td>
+                            @if (subs === "premium") {
+                                <td>{{ meal.sugars | number: '1.2-2' }} g</td>
+                                <td>{{ meal.protein | number: '1.2-2' }} g</td>
+                                <td>{{ meal.fat | number: '1.2-2' }} g</td>
+                            }
+                            <td><button type="button" (click)="add(meal)">Add</button></td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+                
+                @if (subs !== "premium") {
+                    <div class="premium-note">
+                        <p>Upgrade to Premium to view detailed nutritional information (sugars, protein, fat).</p>
+                    </div>
+                }
+            </div>
+            }
+        </div>
+
+        @if (subs === "premium") {
+            <div class="advice-container premium">
+                <h3>Nutritional Advice</h3>
+                <div class="advice-content">
+                    @if (isAdviceLoading) {
+                        <div class="loading-spinner">
+                            <div class="spinner"></div>
+                            <p>Loading your personalized advice...</p>
+                        </div>
+                    } @else {
+                        <div class="advice-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="advice-text">
+                            <p>{{advice}}</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        } @else {
+            <div class="upgrade-container">
+                <h3>Premium Feature: Nutritional Advice</h3>
+                <p>Upgrade to premium to receive personalized nutritional recommendations based on your meal entries and fitness goals.</p>
+                <button class="upgrade-button" [routerLink]="['/user/accountInfo/', user]">Upgrade to Premium</button>
+            </div>
+        }
+
+
+
+    </div>
+
+</div>

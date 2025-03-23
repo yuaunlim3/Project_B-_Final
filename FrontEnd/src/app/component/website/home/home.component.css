@@ -1,0 +1,106 @@
+.about-app {
+    padding: 30px;
+    min-height: 100vh;
+    font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+ 
+.about, .features, .tutorial, .premium {
+    background: linear-gradient(135deg, #a1fcf7, #7bfcf1);
+    width: 85%;
+    margin: 0 auto 24px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    line-height: 1.6;
+    border-left: 5px solid #4fd1c5;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about:hover, .features:hover, .tutorial:hover, .premium:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.about h1, .features h1, .tutorial h1, .premium h1 {
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.about h1::after, .features h1::after, .tutorial h1::after, .premium h1::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 3px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.features h1, .premium h1 {
+    font-weight: 500;
+}
+
+
+.premium {
+    background: linear-gradient(135deg, #a1d2ff, #7bb9fc);
+    border-left: 5px solid #4a90e2;
+}
+
+
+.about-app ul, .about-app ol {
+    padding-left: 22px;
+    margin: 15px 0;
+}
+
+.about-app li {
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.about-app ul li::marker {
+    color: #2c3e50;
+}
+
+.about-app ol li::marker {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.about-app strong {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.tutorial a.cta-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #4a90e2, #357abc);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(74, 144, 226, 0.3);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.tutorial a.cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(74, 144, 226, 0.4);
+    background: linear-gradient(135deg, #357abc, #2c6aa9);
+}
+
