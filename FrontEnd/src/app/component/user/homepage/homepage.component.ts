@@ -50,7 +50,8 @@ export class HomepageComponent implements OnInit, AfterViewInit, OnDestroy {
   protected subscription:string = ''
 
   constructor() {
-    this.meals$ = this.store.select(state => state.mealsInfo.meals);
+    this.meals$ = this.store.select(state => {
+     return state.mealsInfo.meals});
     this.totalCalories$ = this.meals$.pipe(
       map(meals => meals.reduce((total, meal) => total + meal.calories, 0))
     );

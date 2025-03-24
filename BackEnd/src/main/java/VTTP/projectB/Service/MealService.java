@@ -53,6 +53,7 @@ public class MealService {
         mealsInfo.setCalories(json.getJsonNumber("calories").doubleValue());
         mealsInfo.setFat((json.getJsonNumber("fat").doubleValue()));
         mealsInfo.setProtein(json.getJsonNumber("protein").doubleValue());
+        mealsInfo.setType(json.getString("type"));
         return mealsInfo;
     }
 
@@ -149,6 +150,7 @@ public class MealService {
                     .add("fat",document.getDouble("fat"))
                     .add("sugars", document.getDouble("sugar"))
                     .add("protein",document.getDouble("protein"))
+                    .add("type",document.getString("type"))
                     .build();
             arrayBuilder.add(json);
 

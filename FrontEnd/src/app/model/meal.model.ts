@@ -7,6 +7,7 @@ export interface MealsInfo{
     sugars:number
     protein: number
     name:string
+    type:string
 }
 
 export interface Meals{

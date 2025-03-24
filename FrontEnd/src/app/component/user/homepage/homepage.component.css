@@ -8,7 +8,7 @@
   max-width: 1200px;
 }
 
-/* Header/Title Section */
+
 .title {
   background: linear-gradient(135deg, #4a90e2, #2d6bcf);
   color: white;
@@ -51,7 +51,7 @@
   letter-spacing: 0.5px;
 }
 
-/* Homepage Layout */
+
 .homepage {
   display: flex;
   gap: 24px;
@@ -67,7 +67,7 @@
   flex-basis: 70%;
 }
 
-/* Common Section Styles */
+
 section {
   background: white;
   border-radius: 12px;
@@ -91,7 +91,7 @@ section h2 {
   font-weight: 600;
 }
 
-/* Login Streak Section */
+
 .login {
   background: linear-gradient(135deg, #6ab1e7, #4a90e2);
   color: white;
@@ -130,7 +130,7 @@ section h2 {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* General Data Section */
+
 .general {
   flex-grow: 1;
 }
@@ -270,6 +270,17 @@ section h2 {
 .meal-sugars,
 .meal-protein {
   display: inline-block;
+}
+.meal-type {
+  display: block;
+  margin-top: 5px;
+  font-weight: 500;
+  color: #3498db;
+  background-color: #eef7fc;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: capitalize;
+  align-self: flex-start;
 }
 
 .chart-container {

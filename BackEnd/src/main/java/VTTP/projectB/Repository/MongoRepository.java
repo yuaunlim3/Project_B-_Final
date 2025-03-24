@@ -224,7 +224,8 @@ public class MongoRepository {
                 .append("fat", mealsInfo.getFat())
                 .append("protein", mealsInfo.getProtein())
                 .append("sugar", mealsInfo.getSugars())
-                .append("calories", mealsInfo.getCalories());
+                .append("calories", mealsInfo.getCalories())
+                .append("type", mealsInfo.getType());
 
         Update update = new Update()
                 .inc("meals.$.total_fats", mealsInfo.getFat())

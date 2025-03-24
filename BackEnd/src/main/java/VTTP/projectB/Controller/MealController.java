@@ -52,6 +52,7 @@ public class MealController {
         
         Meals meal = mealService.fromJson(json);
         MealsInfo mealsInfo = mealService.getMealInfo(meal);
+        mealsInfo.setType(meal.getType());
         return ResponseEntity.ok(mealsInfo.toJson().toString());
     }
 

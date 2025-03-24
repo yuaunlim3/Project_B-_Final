@@ -41,11 +41,8 @@ export class MealsComponent implements OnInit, OnDestroy {
   date: string = new Date().toISOString().split('T')[0];
 
   ngOnInit(): void {
-    console.log('ngOnInit started');
     this.form = this.createForm();
-    console.log('Form created');
     this.subs = localStorage.getItem("subscription") || "free";
-    console.info('Subscription:', this.subs);
 
     const routeSub = this.activeRoute.params.subscribe(params => {
       this.user = params['name'];
@@ -55,7 +52,6 @@ export class MealsComponent implements OnInit, OnDestroy {
     if (this.subs == "premium") {
       this.isAdviceLoading = true;
       this.mealSvc.getAdvice(this.user).then(result => {
-        console.info(result);
         this.advice = result.advice;
         this.isAdviceLoading = false;
       }).catch(error => {

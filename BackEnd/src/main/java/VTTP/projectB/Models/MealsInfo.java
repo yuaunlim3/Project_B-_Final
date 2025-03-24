@@ -39,12 +39,15 @@ public class MealsInfo {
     public JsonObject toJson() {
         JsonObjectBuilder jsonObjectBuilder = Json.createObjectBuilder()
                 .add("food", this.food)
-                .add("found",String.valueOf(this.found));
+                .add("found",String.valueOf(this.found))
+                .add("type",this.type);
+
 
         if (this.calories != null) jsonObjectBuilder.add("calories", this.calories);
         if (this.fat != null) jsonObjectBuilder.add("fat", this.fat);
         if (this.sugars != null) jsonObjectBuilder.add("sugars", this.sugars);
         if (this.protein != null) jsonObjectBuilder.add("protein", this.protein);
+
 
 
         return jsonObjectBuilder.build();
