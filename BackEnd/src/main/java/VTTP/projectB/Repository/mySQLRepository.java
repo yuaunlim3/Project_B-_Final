@@ -57,7 +57,8 @@ public class mySQLRepository {
     }
 
     public String getCode(String email) {
-        SqlRowSet rs = template.queryForRowSet(mySQLQuery.GET_CODE, email);
+        int id = getID(email);
+        SqlRowSet rs = template.queryForRowSet(mySQLQuery.GET_CODE, id);
         String code = "";
         while (rs.next()) {
             code = rs.getString("otp");

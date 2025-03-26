@@ -56,7 +56,7 @@ export class CreateComponent implements OnInit {
               this.dexieSvc.addUser(this.createUser);
             }
           }).catch(error => {
-            if (error.status === 405) {
+            if (error.status === 409) {
               alert("Account already exists");
             } else {
               alert("An error occurred. Please try again later.");
